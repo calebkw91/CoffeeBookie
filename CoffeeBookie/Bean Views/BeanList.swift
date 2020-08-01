@@ -9,23 +9,34 @@
 import SwiftUI
 
 struct BeanList: View {
-    var bean: [Bean] = beanData
+    @EnvironmentObject private var userData: UserData
     
     var body: some View {
-        List {
-//            Toggle(isOn: $userData.showFavoritesOnly) {
-//                Text("Show Favorites Only")
-//            }
-            
-            ForEach(beanData) { bean in
-                BeanRow(bean: bean)
+        NavigationView{
+            List {
+    //            Toggle(isOn: $userData.showFavoritesOnly) {
+    //                Text("Show Favorites Only")
+    //            }
+                
+                ForEach(userData.beans) { bean in
+                    NavigationLink(destination: BeanDetailHost(bean: bean)){
+                        BeanRow(bean: bean)
+                    }
+                }
             }
+            .navigationBarTitle(Text("Beans"))
+            .onAppear(perform: {
+                UITableView.appearance().tableFooterView = UIView()
+            })
         }
     }
 }
 
 struct BeanList_Previews: PreviewProvider {
     static var previews: some View {
-        BeanList()
+        NavigationView{
+            BeanList()
+        }
+        .environmentObject(UserData())
     }
 }

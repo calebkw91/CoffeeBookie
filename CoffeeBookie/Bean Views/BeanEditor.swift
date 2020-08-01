@@ -30,6 +30,9 @@ struct BeanEditor: View {
                 TextField("Bean Species", text: $bean.species)
             }
         }
+        .onAppear(perform: {
+            UITableView.appearance().tableFooterView = UIView()
+        })
     }
 }
 
