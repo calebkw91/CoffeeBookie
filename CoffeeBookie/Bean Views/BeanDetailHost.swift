@@ -11,15 +11,15 @@ import SwiftUI
 struct BeanDetailHost: View {
     @Environment(\.editMode) var mode
     @EnvironmentObject var userData: UserData
-    @State var draftBean = Bean.default
     @State var bean: Bean
+    var index: Int
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             HStack {
                 if self.mode?.wrappedValue == .active {
                     Button("Cancel") {
-                        self.draftBean = self.bean
+                        self.bean = self.userData.beans[self.index]
                         self.mode?.animation().wrappedValue = .inactive
                     }
                 }
@@ -29,14 +29,14 @@ struct BeanDetailHost: View {
                 EditButton()
             }
             if self.mode?.wrappedValue == .inactive {
-                BeanDetail(bean: bean)
+                BeanDetail(bean: bean, index: 0)
             } else {
-                BeanEditor(bean: $draftBean)
+                BeanEditor(bean: $bean)
                     .onAppear {
-                        self.draftBean = self.bean
+                        self.bean = self.userData.beans[self.index]
                     }
                     .onDisappear {
-                        self.bean = self.draftBean
+                        self.userData.beans[self.index] = self.bean
                     }
             }
         }
@@ -46,6 +46,6 @@ struct BeanDetailHost: View {
 
 struct BeanDetailHost_Previews: PreviewProvider {
     static var previews: some View {
-        BeanDetailHost(bean: beanData[0])
+        BeanDetailHost(bean: beanData[0], index: 0)
     }
 }

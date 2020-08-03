@@ -9,13 +9,34 @@
 import SwiftUI
 
 struct Home: View {
+    @EnvironmentObject private var userData: UserData
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView{
+            List {
+    //            Toggle(isOn: $userData.showFavoritesOnly) {
+    //                Text("Show Favorites Only")
+    //            }
+                
+                ForEach(userData.beans.indices) { i in
+                    NavigationLink(destination: BeanDetail(bean: self.userData.beans[i], index: i)){
+                        BeanRow(bean: self.userData.beans[i])
+                    }
+                }
+            }
+            .navigationBarTitle(Text("Beans"))
+            .onAppear(perform: {
+                UITableView.appearance().tableFooterView = UIView()
+            })
+        }
     }
 }
 
 struct Home_Previews: PreviewProvider {
     static var previews: some View {
-        Home()
+        NavigationView{
+            Home()
+        }
+        .environmentObject(UserData())
     }
 }

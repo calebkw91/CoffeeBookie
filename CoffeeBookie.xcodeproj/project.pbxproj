@@ -18,7 +18,6 @@
 		3C921E6824D45C3D0096E66A /* BeanRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C921E6724D45C3D0096E66A /* BeanRow.swift */; };
 		3C921E6C24D462C60096E66A /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C921E6B24D462C60096E66A /* Data.swift */; };
 		3C921E7024D46B5B0096E66A /* beanData.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C921E6F24D46B5B0096E66A /* beanData.json */; };
-		3C921E7224D497930096E66A /* BeanList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C921E7124D497930096E66A /* BeanList.swift */; };
 		3C921E7424D499490096E66A /* BeanDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C921E7324D499490096E66A /* BeanDetail.swift */; };
 		3C921E7624D4A55E0096E66A /* BeanEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C921E7524D4A55E0096E66A /* BeanEditor.swift */; };
 		3C921E7824D4ADAE0096E66A /* BeanDetailHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C921E7724D4ADAE0096E66A /* BeanDetailHost.swift */; };
@@ -40,7 +39,6 @@
 		3C921E6724D45C3D0096E66A /* BeanRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeanRow.swift; sourceTree = "<group>"; };
 		3C921E6B24D462C60096E66A /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		3C921E6F24D46B5B0096E66A /* beanData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = beanData.json; sourceTree = "<group>"; };
-		3C921E7124D497930096E66A /* BeanList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeanList.swift; sourceTree = "<group>"; };
 		3C921E7324D499490096E66A /* BeanDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeanDetail.swift; sourceTree = "<group>"; };
 		3C921E7524D4A55E0096E66A /* BeanEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeanEditor.swift; sourceTree = "<group>"; };
 		3C921E7724D4ADAE0096E66A /* BeanDetailHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeanDetailHost.swift; sourceTree = "<group>"; };
@@ -132,7 +130,6 @@
 			isa = PBXGroup;
 			children = (
 				3C921E6724D45C3D0096E66A /* BeanRow.swift */,
-				3C921E7124D497930096E66A /* BeanList.swift */,
 				3C921E7324D499490096E66A /* BeanDetail.swift */,
 				3C921E7524D4A55E0096E66A /* BeanEditor.swift */,
 				3C921E7724D4ADAE0096E66A /* BeanDetailHost.swift */,
@@ -217,7 +214,6 @@
 				3C921E6824D45C3D0096E66A /* BeanRow.swift in Sources */,
 				3C921E7C24D4AEA70096E66A /* Profile.swift in Sources */,
 				3C921E6224D456770096E66A /* Bean.swift in Sources */,
-				3C921E7224D497930096E66A /* BeanList.swift in Sources */,
 				3C921E4A24D454A60096E66A /* AppDelegate.swift in Sources */,
 				3C921E7A24D4AE760096E66A /* UserData.swift in Sources */,
 				3C921E4C24D454A60096E66A /* SceneDelegate.swift in Sources */,
