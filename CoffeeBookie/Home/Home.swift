@@ -10,24 +10,52 @@ import SwiftUI
 
 struct Home: View {
     @EnvironmentObject private var userData: UserData
+    @State var showingAdd = false
+    
+    var addButton: some View {
+        Button(action: { self.showingAdd.toggle() }) {
+            Image(systemName: "plus.circle")
+                .imageScale(.large)
+                .accessibility(label: Text("Add Bean"))
+                .padding()
+        }
+    }
     
     var body: some View {
-        NavigationView{
-            List {
-    //            Toggle(isOn: $userData.showFavoritesOnly) {
-    //                Text("Show Favorites Only")
-    //            }
-                
-                ForEach(userData.beans.indices) { i in
-                    NavigationLink(destination: BeanDetail(bean: self.userData.beans[i], index: i)){
-                        BeanRow(bean: self.userData.beans[i])
+        TabView {
+            NavigationView{
+                List {
+                    ForEach(userData.beans.indices, id: \.self) { i in
+                        NavigationLink(destination: BeanDetail(bean: self.userData.beans[i], index: i)){
+                            BeanRow(bean: self.userData.beans[i])
+                        }
                     }
                 }
+                .navigationBarTitle(Text("Beans"))
+                .navigationBarItems(trailing: addButton)
+                .sheet(isPresented: $showingAdd) {
+                    BeanAdd(isPresented: self.$showingAdd)
+                        .environmentObject(self.userData)
+                }
+                .onAppear(perform: {
+                    UITableView.appearance().tableFooterView = UIView()
+                })
+                
             }
-            .navigationBarTitle(Text("Beans"))
-            .onAppear(perform: {
-                UITableView.appearance().tableFooterView = UIView()
-            })
+                .tabItem {
+                    Image(systemName: "heart.fill")
+                    Text("Beans")
+            }
+            Text("Friends Screen")
+                .tabItem {
+                    Image(systemName: "person.fill")
+                    Text("Friends")
+            }
+            Text("Nearby Screen")
+                .tabItem {
+                    Image(systemName: "mappin.circle.fill")
+                    Text("Nearby")
+            }
         }
     }
 }

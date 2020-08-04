@@ -14,6 +14,7 @@ struct BeanDetail: View {
     var index: Int
     @State var showingEdit = false
     
+    
     var editButton: some View {
         Button(action: {
             if self.showingEdit == true {

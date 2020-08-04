@@ -24,7 +24,7 @@ struct Bean: Hashable, Codable, Identifiable {
     var ratio: String
     var grindTime: String
     
-    static let `default` = Self(id: 0, name: "Bean Edit", imageName: "image", coordinates: Coordinates(latitude: 0, longitude: 0), origin: "Africa", species: "Arabica", category: .lightRoast, isFavorite: true, grind: "9", bloomTime: "35", brewTemp: "190", ratio: "1:1.3", grindTime: "6")
+    static let `default` = Self(id: 0, name: "Bean Name", imageName: "image", coordinates: Coordinates(latitude: 0, longitude: 0), origin: "Origin", species: "Species", category: .lightRoast, isFavorite: true, grind: "0", bloomTime: "0", brewTemp: "0", ratio: "0", grindTime: "0")
 
     var locationCoordinate: CLLocationCoordinate2D {
         CLLocationCoordinate2D(

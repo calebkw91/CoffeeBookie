@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C221A2024D9A11900E20E30 /* BeanAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C221A1F24D9A11900E20E30 /* BeanAdd.swift */; };
 		3C921E4A24D454A60096E66A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C921E4924D454A60096E66A /* AppDelegate.swift */; };
 		3C921E4C24D454A60096E66A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C921E4B24D454A60096E66A /* SceneDelegate.swift */; };
 		3C921E4E24D454A60096E66A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C921E4D24D454A60096E66A /* ContentView.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3C221A1F24D9A11900E20E30 /* BeanAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeanAdd.swift; sourceTree = "<group>"; };
 		3C921E4624D454A60096E66A /* CoffeeBookie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeeBookie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C921E4924D454A60096E66A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3C921E4B24D454A60096E66A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				3C921E7324D499490096E66A /* BeanDetail.swift */,
 				3C921E7524D4A55E0096E66A /* BeanEditor.swift */,
 				3C921E7724D4ADAE0096E66A /* BeanDetailHost.swift */,
+				3C221A1F24D9A11900E20E30 /* BeanAdd.swift */,
 			);
 			path = "Bean Views";
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 				3C921E7424D499490096E66A /* BeanDetail.swift in Sources */,
 				3C921E6824D45C3D0096E66A /* BeanRow.swift in Sources */,
 				3C921E7C24D4AEA70096E66A /* Profile.swift in Sources */,
+				3C221A2024D9A11900E20E30 /* BeanAdd.swift in Sources */,
 				3C921E6224D456770096E66A /* Bean.swift in Sources */,
 				3C921E4A24D454A60096E66A /* AppDelegate.swift in Sources */,
 				3C921E7A24D4AE760096E66A /* UserData.swift in Sources */,
