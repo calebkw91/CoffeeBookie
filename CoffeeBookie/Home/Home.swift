@@ -30,9 +30,11 @@ struct Home: View {
                             BeanRow(bean: self.userData.beans[i])
                         }
                     }
+                    .onMove(perform: moveBean)
+                    .onDelete(perform: deleteBean)
                 }
-                .navigationBarTitle(Text("Beans"))
-                .navigationBarItems(trailing: addButton)
+                .navigationBarTitle("Beans", displayMode: .inline)
+                .navigationBarItems(leading: addButton, trailing: EditButton())
                 .sheet(isPresented: $showingAdd) {
                     BeanAdd(isPresented: self.$showingAdd)
                         .environmentObject(self.userData)
@@ -43,19 +45,31 @@ struct Home: View {
                 
             }
                 .tabItem {
-                    Image(systemName: "heart.fill")
+                    Image(systemName: "tray")
                     Text("Beans")
             }
             Text("Friends Screen")
                 .tabItem {
-                    Image(systemName: "person.fill")
-                    Text("Friends")
+                    Image(systemName: "person.crop.circle")
+                    Text("Profile")
             }
             Text("Nearby Screen")
                 .tabItem {
-                    Image(systemName: "mappin.circle.fill")
-                    Text("Nearby")
+                    Image(systemName: "gear")
+                    Text("Settings")
             }
+        }
+    }
+    
+    func deleteBean(offsets: IndexSet){
+        withAnimation{
+            userData.beans.remove(atOffsets: offsets)
+        }
+    }
+    
+    func moveBean(from: IndexSet, to: Int){
+        withAnimation{
+            userData.beans.move(fromOffsets: from, toOffset: to)
         }
     }
 }
