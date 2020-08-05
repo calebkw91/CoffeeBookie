@@ -11,6 +11,7 @@ import SwiftUI
 struct Home: View {
     @EnvironmentObject private var userData: UserData
     @State var showingAdd = false
+    @State var beans: [Bean] = []
     
     var addButton: some View {
         Button(action: { self.showingAdd.toggle() }) {
