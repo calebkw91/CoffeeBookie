@@ -9,80 +9,61 @@
 import SwiftUI
 
 struct BeanAdd: View {
-    @EnvironmentObject var userData: UserData
-    @State var draftBean = Bean.default
-    @Binding var isPresented: Bool
+    static let DefaultBeanName = "An untitled masterpiece"
+    static let DefaultBeanSpecies = "Genre-buster"
+    static let DefaultBeanOrigin = "Genre-buster"
+    static let DefaultBeanRoast = "Genre-buster"
+    static let DefaultBeanBrewTemp = "Genre-buster"
+    static let DefaultBeanGrindSetting = "Genre-buster"
+    static let DefaultBeanBloomTime = "Genre-buster"
+    static let DefaultBeanRatio = "Genre-buster"
+    static let DefaultBeanGrindTime = "Genre-buster"
     
-    var saveButton: some View {
-        Button(action: {
-            self.userData.beans.append(self.draftBean)
-            self.isPresented = false
-        }) {
-            Text("Save")
-        }
-    }
+    @State var name = ""
+    @State var species = ""
+    @State var origin = ""
+    @State var roast = ""
+    @State var brewTemp = ""
+    @State var grindSetting = ""
+    @State var bloomTime = ""
+    @State var beanRatio = ""
+    @State var grindTime = ""
+
+    let onComplete: (String, String, String, String, String, String, String, String, String) -> Void
     
     var body: some View {
-        
-        VStack {
-            HStack {
-                Spacer()
-                saveButton
-                    .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-            }
-            TextField("Name", text: $draftBean.name)
-                .font(.largeTitle)
-                .multilineTextAlignment(.center)
-                .keyboardType(.default)
-            List{
-                Section(header: Text("Bean")) {
-                    Text("Roast: \(draftBean.category.rawValue)")
-                    HStack {
-                        Text("Origin:")
-                        TextField("Origin", text: $draftBean.origin)
-                    }
-                    HStack {
-                        Text("Species:")
-                        TextField("Species", text: $draftBean.species)
-                    }
+        NavigationView{
+            Form{
+                Section(header: Text("Bean Name")){
+                    TextField("Name", text: $name)
                 }
-                Section(header: Text("Brew Details")) {
-                    HStack {
-                        Text("Brew Temp:")
-                        TextField("Brew Temp", text: $draftBean.brewTemp)
-                            .keyboardType(.numberPad)
-                    }
-                    HStack {
-                        Text("Grind Setting:")
-                        TextField("Grind Setting", text: $draftBean.grind)
-                            .keyboardType(.numberPad)
-                    }
-                    HStack {
-                        Text("Bloom Time:")
-                        TextField("Bloom Time", text: $draftBean.bloomTime)
-                            .keyboardType(.numberPad)
-                    }
-                    HStack {
-                        Text("Ratio:")
-                        TextField("Ratio", text: $draftBean.ratio)
-                            .keyboardType(.numberPad)
-                    }
-                    HStack {
-                        Text("Grind Time:")
-                        TextField("Grind Time", text: $draftBean.grindTime)
-                            .keyboardType(.numberPad)
-                    }
+                Section(header: Text("Origin")){
+                    TextField("Origin", text: $origin)
+                }
+                Section(header: Text("Roast")){
+                    TextField("Roast", text: $roast)
                 }
             }
-            .onAppear(perform: {
-                UITableView.appearance().tableFooterView = UIView()
-            })
+            .navigationBarTitle(Text("Add Bean"), displayMode: .inline)
         }
+    }
+    private func addMoveAction() {
+        onComplete(
+            name.isEmpty ? BeanAdd.DefaultBeanName : name,
+            species.isEmpty ? BeanAdd.DefaultBeanSpecies : species,
+            roast.isEmpty ? BeanAdd.DefaultBeanRoast : roast,
+            origin.isEmpty ? BeanAdd.DefaultBeanOrigin : origin,
+            brewTemp.isEmpty ? BeanAdd.DefaultBeanBrewTemp : brewTemp,
+            grindSetting.isEmpty ? BeanAdd.DefaultBeanGrindSetting : grindSetting,
+            bloomTime.isEmpty ? BeanAdd.DefaultBeanBloomTime : bloomTime,
+            beanRatio.isEmpty ? BeanAdd.DefaultBeanRatio : beanRatio,
+            grindTime.isEmpty ? BeanAdd.DefaultBeanGrindTime : grindTime
+        )
     }
 }
 
-struct BeanAdd_Previews: PreviewProvider {
-    static var previews: some View {
-        BeanAdd(isPresented: .constant(true))
-    }
-}
+//struct BeanAdd_Previews: PreviewProvider {
+//    static var previews: some View {
+//        BeanAdd(name: "Name", species: "Species", origin: "Origin", roast: "Roast", brewTemp: "BreTemp", grindSetting: "GrindSetting", bloomTime: "BloomTime", beanRatio: "BeanRatio", grindTime: "GrindTime", onComplete: (String, String, String, String, String, String, String, String, String) -> Void)
+//    }
+//}

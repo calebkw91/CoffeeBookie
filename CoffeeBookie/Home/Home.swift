@@ -9,69 +9,68 @@
 import SwiftUI
 
 struct Home: View {
-    @EnvironmentObject private var userData: UserData
-    @State var showingAdd = false
     @State var beans: [Bean] = []
+    @Environment(\.managedObjectContext) var managedObjectContext
+    @State var isPresented = false
     
-    var addButton: some View {
-        Button(action: { self.showingAdd.toggle() }) {
-            Image(systemName: "plus.circle")
-                .imageScale(.large)
-                .accessibility(label: Text("Add Bean"))
-                .padding()
+//    var addButton: some View {
+//        Button(action: { self.showingAdd.toggle() }) {
+//            Image(systemName: "plus.circle")
+//                .imageScale(.large)
+//                .accessibility(label: Text("Add Bean"))
+//                .padding()
+//        }
+//    }
+    
+    var body: some View {
+        NavigationView{
+            List {
+                ForEach(beans, id: \.name) {
+                    BeanRow(bean: $0)
+                }
+                .onDelete(perform: deleteBean)
+            }
+            .sheet(isPresented: $isPresented) {
+                BeanAdd { name, species, ratio, origin, brewTemp, roast, grindSetting, grindTime, bloomTime in
+                    self.addBean(name: name, origin: origin, roast: roast, species: species, brewTemp: brewTemp, bloomTime: bloomTime, ratio: ratio, grindTime: grindTime, grindSetting: grindSetting)
+                    self.isPresented = false
+                }
+            }
+            .navigationBarTitle("Beans", displayMode: .inline)
+            .navigationBarItems(leading: Button(action: { self.isPresented.toggle()}){Image(systemName: "plus.circle")}, trailing: EditButton())
         }
     }
     
-    var body: some View {
-        TabView {
-            NavigationView{
-                List {
-                    ForEach(userData.beans.indices, id: \.self) { i in
-                        NavigationLink(destination: BeanDetail(bean: self.userData.beans[i], index: i)){
-                            BeanRow(bean: self.userData.beans[i])
-                        }
-                    }
-                    .onMove(perform: moveBean)
-                    .onDelete(perform: deleteBean)
-                }
-                .navigationBarTitle("Beans", displayMode: .inline)
-                .navigationBarItems(leading: addButton, trailing: EditButton())
-                .sheet(isPresented: $showingAdd) {
-                    BeanAdd(isPresented: self.$showingAdd)
-                        .environmentObject(self.userData)
-                }
-                .onAppear(perform: {
-                    UITableView.appearance().tableFooterView = UIView()
-                })
-                
-            }
-                .tabItem {
-                    Image(systemName: "tray")
-                    Text("Beans")
-            }
-            Text("Friends Screen")
-                .tabItem {
-                    Image(systemName: "person.crop.circle")
-                    Text("Profile")
-            }
-            Text("Nearby Screen")
-                .tabItem {
-                    Image(systemName: "gear")
-                    Text("Settings")
-            }
-        }
+    func saveContext() {
+      do {
+        try managedObjectContext.save()
+      } catch {
+        print("Error saving managed object context: \(error)")
+      }
+    }
+
+    func addBean(name: String, origin: String, roast: String, species: String, brewTemp: String, bloomTime: String, ratio: String, grindTime: String, grindSetting: String) {
+        let newBean = Bean(context: managedObjectContext)
+        
+        newBean.name = name
+        newBean.roast = roast
+        newBean.species = species
+        newBean.brewTemp = brewTemp
+        newBean.bloomTime = bloomTime
+        newBean.grindTime = grindTime
+        newBean.ratio = ratio
+        newBean.origin = origin
+        newBean.grindSetting = grindSetting
     }
     
     func deleteBean(offsets: IndexSet){
-        withAnimation{
-            userData.beans.remove(atOffsets: offsets)
+        offsets.forEach { index in
+            let bean = self.beans[index]
+            
+            self.managedObjectContext.delete(bean)
         }
-    }
-    
-    func moveBean(from: IndexSet, to: Int){
-        withAnimation{
-            userData.beans.move(fromOffsets: from, toOffset: to)
-        }
+        
+        saveContext()
     }
 }
 
@@ -80,6 +79,5 @@ struct Home_Previews: PreviewProvider {
         NavigationView{
             Home()
         }
-        .environmentObject(UserData())
     }
 }

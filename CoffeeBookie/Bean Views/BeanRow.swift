@@ -14,34 +14,26 @@ struct BeanRow: View {
     var body: some View {
         VStack {
             HStack {
-                Text(bean.name)
-                    .fontWeight(.medium)
+                bean.name.map(Text.init)
+                    .font(.headline)
                 Spacer()
-
-                if bean.isFavorite {
-                    Image(systemName: "star.fill")
-                        .imageScale(.medium)
-                        .foregroundColor(.yellow)
-                }
             }
             HStack {
-                Text(bean.category.rawValue)
+                bean.roast.map(Text.init)
                     .font(.subheadline)
-                    .fontWeight(.light)
                     .foregroundColor(Color.gray)
                 Spacer()
-                Text(bean.origin)
+                bean.roast.map(Text.init)
                     .font(.subheadline)
-                    .fontWeight(.light)
                     .foregroundColor(.gray)
             }
         }
     }
 }
 
-struct BeanRow_Previews: PreviewProvider {
-    static var previews: some View {
-        BeanRow(bean: beanData[0])
-        .previewLayout(.fixed(width: 300, height: 70))
-    }
-}
+//struct BeanRow_Previews: PreviewProvider {
+//    static var previews: some View {
+//        BeanRow(bean: beanData[0])
+//        .previewLayout(.fixed(width: 300, height: 70))
+//    }
+//}
