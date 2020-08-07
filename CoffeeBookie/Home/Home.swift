@@ -9,7 +9,8 @@
 import SwiftUI
 
 struct Home: View {
-    @State var beans: [Bean] = []
+    @FetchRequest(entity: Bean.entity(),
+                  sortDescriptors: [NSSortDescriptor(keyPath: \Bean.name, ascending: true)]) var beans: FetchedResults<Bean>
     @Environment(\.managedObjectContext) var managedObjectContext
     @State var isPresented = false
     
@@ -25,14 +26,18 @@ struct Home: View {
     var body: some View {
         NavigationView{
             List {
-                ForEach(beans, id: \.name) {
-                    BeanRow(bean: $0)
+                ForEach(beans, id: \.name) {bean in
+                    NavigationLink(
+                        destination: BeanDetail(bean: bean)
+                    ) {
+                        BeanRow(bean: bean)
+                    }
                 }
                 .onDelete(perform: deleteBean)
             }
             .sheet(isPresented: $isPresented) {
-                BeanAdd { name, species, ratio, origin, brewTemp, roast, grindSetting, grindTime, bloomTime in
-                    self.addBean(name: name, origin: origin, roast: roast, species: species, brewTemp: brewTemp, bloomTime: bloomTime, ratio: ratio, grindTime: grindTime, grindSetting: grindSetting)
+                BeanAdd { name, species, origin, roast, brewTemp, grindSetting, bloomTime, ratio, grindTime in
+                    self.addBean(name: name, species: species, origin: origin, roast: roast, brewTemp: brewTemp, grindSetting: grindSetting, bloomTime: bloomTime, ratio: ratio, grindTime: grindTime)
                     self.isPresented = false
                 }
             }
@@ -49,7 +54,7 @@ struct Home: View {
       }
     }
 
-    func addBean(name: String, origin: String, roast: String, species: String, brewTemp: String, bloomTime: String, ratio: String, grindTime: String, grindSetting: String) {
+    func addBean(name: String, species: String, origin: String, roast: String, brewTemp: String, grindSetting: String, bloomTime: String, ratio: String, grindTime: String) {
         let newBean = Bean(context: managedObjectContext)
         
         newBean.name = name

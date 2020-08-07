@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct BeanRow: View {
     var bean: Bean
@@ -23,7 +24,7 @@ struct BeanRow: View {
                     .font(.subheadline)
                     .foregroundColor(Color.gray)
                 Spacer()
-                bean.roast.map(Text.init)
+                bean.origin.map(Text.init)
                     .font(.subheadline)
                     .foregroundColor(.gray)
             }
@@ -31,9 +32,14 @@ struct BeanRow: View {
     }
 }
 
-//struct BeanRow_Previews: PreviewProvider {
-//    static var previews: some View {
-//        BeanRow(bean: beanData[0])
-//        .previewLayout(.fixed(width: 300, height: 70))
-//    }
-//}
+struct BeanRow_Previews: PreviewProvider {
+    static var previews: some View {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        //Test data
+        let newBean = Bean.init(context: context)
+        newBean.name = "Bean Name"
+        newBean.origin = "Bean Origin"
+        newBean.roast = "Bean Roast"
+        return BeanRow(bean: newBean).environment(\.managedObjectContext, context)
+    }
+}

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3C221A2024D9A11900E20E30 /* BeanAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C221A1F24D9A11900E20E30 /* BeanAdd.swift */; };
-		3C3ECE3724DB517800877208 /* CoffeeBookie.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3C3ECE3524DB517800877208 /* CoffeeBookie.xcdatamodeld */; };
+		3C3ECE3724DB517800877208 /* CoffeePad.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3C3ECE3524DB517800877208 /* CoffeePad.xcdatamodeld */; };
 		3C921E4A24D454A60096E66A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C921E4924D454A60096E66A /* AppDelegate.swift */; };
 		3C921E4C24D454A60096E66A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C921E4B24D454A60096E66A /* SceneDelegate.swift */; };
 		3C921E5024D454A90096E66A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C921E4F24D454A90096E66A /* Assets.xcassets */; };
@@ -17,12 +17,13 @@
 		3C921E5F24D455980096E66A /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C921E5E24D455980096E66A /* Home.swift */; };
 		3C921E6824D45C3D0096E66A /* BeanRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C921E6724D45C3D0096E66A /* BeanRow.swift */; };
 		3C921E7424D499490096E66A /* BeanDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C921E7324D499490096E66A /* BeanDetail.swift */; };
+		3CAB690224DC5F9F002A84C8 /* KeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAB690124DC5F9F002A84C8 /* KeyboardResponder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3C221A1F24D9A11900E20E30 /* BeanAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeanAdd.swift; sourceTree = "<group>"; };
 		3C3ECE3624DB517800877208 /* CoffeeBookie.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoffeeBookie.xcdatamodel; sourceTree = "<group>"; };
-		3C921E4624D454A60096E66A /* CoffeeBookie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeeBookie.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C921E4624D454A60096E66A /* CoffeePad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeePad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C921E4924D454A60096E66A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3C921E4B24D454A60096E66A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		3C921E4F24D454A90096E66A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -32,6 +33,7 @@
 		3C921E5E24D455980096E66A /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		3C921E6724D45C3D0096E66A /* BeanRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeanRow.swift; sourceTree = "<group>"; };
 		3C921E7324D499490096E66A /* BeanDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeanDetail.swift; sourceTree = "<group>"; };
+		3CAB690124DC5F9F002A84C8 /* KeyboardResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +58,7 @@
 		3C921E4724D454A60096E66A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3C921E4624D454A60096E66A /* CoffeeBookie.app */,
+				3C921E4624D454A60096E66A /* CoffeePad.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -72,7 +74,8 @@
 				3C921E5424D454A90096E66A /* LaunchScreen.storyboard */,
 				3C921E5724D454A90096E66A /* Info.plist */,
 				3C921E5124D454A90096E66A /* Preview Content */,
-				3C3ECE3524DB517800877208 /* CoffeeBookie.xcdatamodeld */,
+				3C3ECE3524DB517800877208 /* CoffeePad.xcdatamodeld */,
+				3CAB690124DC5F9F002A84C8 /* KeyboardResponder.swift */,
 			);
 			path = CoffeeBookie;
 			sourceTree = "<group>";
@@ -106,9 +109,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3C921E4524D454A60096E66A /* CoffeeBookie */ = {
+		3C921E4524D454A60096E66A /* CoffeePad */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3C921E5A24D454A90096E66A /* Build configuration list for PBXNativeTarget "CoffeeBookie" */;
+			buildConfigurationList = 3C921E5A24D454A90096E66A /* Build configuration list for PBXNativeTarget "CoffeePad" */;
 			buildPhases = (
 				3C921E4224D454A60096E66A /* Sources */,
 				3C921E4324D454A60096E66A /* Frameworks */,
@@ -118,9 +121,9 @@
 			);
 			dependencies = (
 			);
-			name = CoffeeBookie;
+			name = CoffeePad;
 			productName = CoffeeBookie;
-			productReference = 3C921E4624D454A60096E66A /* CoffeeBookie.app */;
+			productReference = 3C921E4624D454A60096E66A /* CoffeePad.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -138,7 +141,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3C921E4124D454A60096E66A /* Build configuration list for PBXProject "CoffeeBookie" */;
+			buildConfigurationList = 3C921E4124D454A60096E66A /* Build configuration list for PBXProject "CoffeePad" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -151,7 +154,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3C921E4524D454A60096E66A /* CoffeeBookie */,
+				3C921E4524D454A60096E66A /* CoffeePad */,
 			);
 		};
 /* End PBXProject section */
@@ -179,8 +182,9 @@
 				3C221A2024D9A11900E20E30 /* BeanAdd.swift in Sources */,
 				3C921E4A24D454A60096E66A /* AppDelegate.swift in Sources */,
 				3C921E4C24D454A60096E66A /* SceneDelegate.swift in Sources */,
+				3CAB690224DC5F9F002A84C8 /* KeyboardResponder.swift in Sources */,
 				3C921E5F24D455980096E66A /* Home.swift in Sources */,
-				3C3ECE3724DB517800877208 /* CoffeeBookie.xcdatamodeld in Sources */,
+				3C3ECE3724DB517800877208 /* CoffeePad.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,7 +330,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.calebwalker.CoffeeBookie;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CoffeePad;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -346,7 +350,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.calebwalker.CoffeeBookie;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CoffeePad;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -355,7 +359,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3C921E4124D454A60096E66A /* Build configuration list for PBXProject "CoffeeBookie" */ = {
+		3C921E4124D454A60096E66A /* Build configuration list for PBXProject "CoffeePad" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3C921E5824D454A90096E66A /* Debug */,
@@ -364,7 +368,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3C921E5A24D454A90096E66A /* Build configuration list for PBXNativeTarget "CoffeeBookie" */ = {
+		3C921E5A24D454A90096E66A /* Build configuration list for PBXNativeTarget "CoffeePad" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3C921E5B24D454A90096E66A /* Debug */,
@@ -376,13 +380,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		3C3ECE3524DB517800877208 /* CoffeeBookie.xcdatamodeld */ = {
+		3C3ECE3524DB517800877208 /* CoffeePad.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				3C3ECE3624DB517800877208 /* CoffeeBookie.xcdatamodel */,
 			);
 			currentVersion = 3C3ECE3624DB517800877208 /* CoffeeBookie.xcdatamodel */;
-			path = CoffeeBookie.xcdatamodeld;
+			path = CoffeePad.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

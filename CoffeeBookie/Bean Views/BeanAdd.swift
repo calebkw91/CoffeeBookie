@@ -26,37 +26,50 @@ struct BeanAdd: View {
     @State var brewTemp = ""
     @State var grindSetting = ""
     @State var bloomTime = ""
-    @State var beanRatio = ""
+    @State var ratio = ""
     @State var grindTime = ""
 
     let onComplete: (String, String, String, String, String, String, String, String, String) -> Void
     
+    @ObservedObject var keyboardResponder = KeyboardResponder()
     var body: some View {
         NavigationView{
             Form{
-                Section(header: Text("Bean Name")){
+                Section(header: Text("Bean Info")){
                     TextField("Name", text: $name)
-                }
-                Section(header: Text("Origin")){
+                    TextField("Species", text: $species)
                     TextField("Origin", text: $origin)
-                }
-                Section(header: Text("Roast")){
                     TextField("Roast", text: $roast)
+                }
+                Section(header: Text("Brew Settings")){
+                    TextField("Brew Temp", text: $brewTemp)
+                    TextField("Grind Setting", text: $grindSetting)
+                    TextField("Bloom Time", text: $bloomTime)
+                    TextField("Ratio", text: $ratio)
+                    TextField("Grind Time", text: $grindTime)
+                }
+                Section{
+                    Button(action: addBeanAction) {
+                        Text("Add Bean")
+                    }
                 }
             }
             .navigationBarTitle(Text("Add Bean"), displayMode: .inline)
         }
+        .offset(y: -keyboardResponder.currentHeight*0.9)
     }
-    private func addMoveAction() {
+    
+    
+    private func addBeanAction() {
         onComplete(
             name.isEmpty ? BeanAdd.DefaultBeanName : name,
             species.isEmpty ? BeanAdd.DefaultBeanSpecies : species,
-            roast.isEmpty ? BeanAdd.DefaultBeanRoast : roast,
             origin.isEmpty ? BeanAdd.DefaultBeanOrigin : origin,
+            roast.isEmpty ? BeanAdd.DefaultBeanRoast : roast,
             brewTemp.isEmpty ? BeanAdd.DefaultBeanBrewTemp : brewTemp,
             grindSetting.isEmpty ? BeanAdd.DefaultBeanGrindSetting : grindSetting,
             bloomTime.isEmpty ? BeanAdd.DefaultBeanBloomTime : bloomTime,
-            beanRatio.isEmpty ? BeanAdd.DefaultBeanRatio : beanRatio,
+            ratio.isEmpty ? BeanAdd.DefaultBeanRatio : ratio,
             grindTime.isEmpty ? BeanAdd.DefaultBeanGrindTime : grindTime
         )
     }
@@ -64,6 +77,6 @@ struct BeanAdd: View {
 
 //struct BeanAdd_Previews: PreviewProvider {
 //    static var previews: some View {
-//        BeanAdd(name: "Name", species: "Species", origin: "Origin", roast: "Roast", brewTemp: "BreTemp", grindSetting: "GrindSetting", bloomTime: "BloomTime", beanRatio: "BeanRatio", grindTime: "GrindTime", onComplete: (String, String, String, String, String, String, String, String, String) -> Void)
+//        BeanAdd(name: "name", species: "species", origin: "origin", roast: "roast", brewTemp: "brewtemp", grindSetting: "grindsetting", bloomTime: "bloomtime", ratio: "ratio", grindTime: "grindtime")
 //    }
 //}
