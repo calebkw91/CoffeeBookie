@@ -17,6 +17,7 @@
 		3C921E5F24D455980096E66A /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C921E5E24D455980096E66A /* Home.swift */; };
 		3C921E6824D45C3D0096E66A /* BeanRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C921E6724D45C3D0096E66A /* BeanRow.swift */; };
 		3C921E7424D499490096E66A /* BeanDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C921E7324D499490096E66A /* BeanDetail.swift */; };
+		3C92297024E2FDCF005EA3D1 /* BeanEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C92296F24E2FDCF005EA3D1 /* BeanEdit.swift */; };
 		3CAB690224DC5F9F002A84C8 /* KeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAB690124DC5F9F002A84C8 /* KeyboardResponder.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		3C921E5E24D455980096E66A /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		3C921E6724D45C3D0096E66A /* BeanRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeanRow.swift; sourceTree = "<group>"; };
 		3C921E7324D499490096E66A /* BeanDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeanDetail.swift; sourceTree = "<group>"; };
+		3C92296F24E2FDCF005EA3D1 /* BeanEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeanEdit.swift; sourceTree = "<group>"; };
 		3CAB690124DC5F9F002A84C8 /* KeyboardResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,6 +104,7 @@
 				3C921E6724D45C3D0096E66A /* BeanRow.swift */,
 				3C921E7324D499490096E66A /* BeanDetail.swift */,
 				3C221A1F24D9A11900E20E30 /* BeanAdd.swift */,
+				3C92296F24E2FDCF005EA3D1 /* BeanEdit.swift */,
 			);
 			path = "Bean Views";
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C921E7424D499490096E66A /* BeanDetail.swift in Sources */,
+				3C92297024E2FDCF005EA3D1 /* BeanEdit.swift in Sources */,
 				3C921E6824D45C3D0096E66A /* BeanRow.swift in Sources */,
 				3C221A2024D9A11900E20E30 /* BeanAdd.swift in Sources */,
 				3C921E4A24D454A60096E66A /* AppDelegate.swift in Sources */,

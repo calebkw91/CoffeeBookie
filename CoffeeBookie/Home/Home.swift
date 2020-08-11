@@ -13,16 +13,7 @@ struct Home: View {
                   sortDescriptors: [NSSortDescriptor(keyPath: \Bean.name, ascending: true)]) var beans: FetchedResults<Bean>
     @Environment(\.managedObjectContext) var managedObjectContext
     @State var isPresented = false
-    
-//    var addButton: some View {
-//        Button(action: { self.showingAdd.toggle() }) {
-//            Image(systemName: "plus.circle")
-//                .imageScale(.large)
-//                .accessibility(label: Text("Add Bean"))
-//                .padding()
-//        }
-//    }
-    
+        
     var body: some View {
         NavigationView{
             List {

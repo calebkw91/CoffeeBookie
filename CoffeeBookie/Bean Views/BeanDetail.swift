@@ -11,15 +11,14 @@ import CoreData
 
 struct BeanDetail: View {
     @State var bean: Bean
-    @State var showingEdit = false
-    
+    @State var isPresented = false
     
 //    var editButton: some View {
 //        Button(action: {
 //            if self.showingEdit == true {
 //                self.userData.beans[self.index] = self.bean
 //            }
-//            
+//
 //            self.showingEdit.toggle()
 //        }) {
 //            if self.showingEdit == false {
@@ -35,8 +34,12 @@ struct BeanDetail: View {
             List{
                 Section(header: Text("Bean")) {
                     HStack {
-                        Text("Roast: ")
+                        Text("Name: ")
                         bean.name.map(Text.init)
+                    }
+                    HStack {
+                        Text("Roast: ")
+                        bean.roast.map(Text.init)
                     }
                     HStack {
                         Text("Origin: ")
@@ -73,6 +76,8 @@ struct BeanDetail: View {
             .onAppear(perform: {
                 UITableView.appearance().tableFooterView = UIView()
             })
+            .sheet(isPresented: $isPresented) {BeanEdit(bean: self.bean, isPresented: self.$isPresented)}
+            .navigationBarItems(trailing: Button(action: { self.isPresented.toggle()}){Text("Edit")})
         }
     }
 }
