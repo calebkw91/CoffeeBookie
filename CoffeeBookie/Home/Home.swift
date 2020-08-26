@@ -15,26 +15,43 @@ struct Home: View {
     @State var isPresented = false
         
     var body: some View {
-        NavigationView{
-            List {
-                ForEach(beans, id: \.name) {bean in
-                    NavigationLink(
-                        destination: BeanDetail(bean: bean)
-                    ) {
-                        BeanRow(bean: bean)
+        TabView {
+            NavigationView{
+                List {
+                    ForEach(beans, id: \.name) {bean in
+                        NavigationLink(
+                            destination: BeanDetail(bean: bean)
+                        ) {
+                            BeanRow(bean: bean)
+                        }
+                    }
+                    .onDelete(perform: deleteBean)
+                }
+                .sheet(isPresented: $isPresented) {
+                    BeanAdd { name, species, origin, roast, brewTemp, grindSetting, bloomTime, ratio, grindTime in
+                        self.addBean(name: name, species: species, origin: origin, roast: roast, brewTemp: brewTemp, grindSetting: grindSetting, bloomTime: bloomTime, ratio: ratio, grindTime: grindTime)
+                        self.isPresented = false
                     }
                 }
-                .onDelete(perform: deleteBean)
+                .navigationBarTitle("Beans", displayMode: .inline)
+                .navigationBarItems(leading: Button(action: { self.isPresented.toggle()}){Image(systemName: "plus.circle")}, trailing: EditButton())
             }
-            .sheet(isPresented: $isPresented) {
-                BeanAdd { name, species, origin, roast, brewTemp, grindSetting, bloomTime, ratio, grindTime in
-                    self.addBean(name: name, species: species, origin: origin, roast: roast, brewTemp: brewTemp, grindSetting: grindSetting, bloomTime: bloomTime, ratio: ratio, grindTime: grindTime)
-                    self.isPresented = false
-                }
+                .tabItem {
+                    Image(systemName: "folder")
+                    Text("Beans")
             }
-            .navigationBarTitle("Beans", displayMode: .inline)
-            .navigationBarItems(leading: Button(action: { self.isPresented.toggle()}){Image(systemName: "plus.circle")}, trailing: EditButton())
+            Text("Profile Screen")
+                .tabItem {
+                    Image(systemName: "person.fill")
+                    Text("Profile")
+            }
+            Text("Settings Screen")
+                .tabItem {
+                    Image(systemName: "gear")
+                    Text("Settings")
+            }
         }
+
     }
     
     func saveContext() {

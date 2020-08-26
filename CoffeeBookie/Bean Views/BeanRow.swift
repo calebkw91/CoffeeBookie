@@ -19,6 +19,7 @@ struct BeanRow: View {
                     .font(.headline)
                 Spacer()
             }
+            .padding(.bottom)
             HStack {
                 bean.roast.map(Text.init)
                     .font(.subheadline)
