@@ -12,7 +12,11 @@ struct Home: View {
     @FetchRequest(entity: Bean.entity(),
                   sortDescriptors: [NSSortDescriptor(keyPath: \Bean.name, ascending: true)]) var beans: FetchedResults<Bean>
     @Environment(\.managedObjectContext) var managedObjectContext
+    @Environment (\.colorScheme) var colorScheme : ColorScheme
     @State var isPresented = false
+    @State var darkModeSelection = 0
+    let darkModeStates = ["System", "Dark", "Light"]
+    // 0=System 1=Dark 2=Light mode
         
     var body: some View {
         TabView {
@@ -36,22 +40,34 @@ struct Home: View {
                 .navigationBarTitle("Beans", displayMode: .inline)
                 .navigationBarItems(leading: Button(action: { self.isPresented.toggle()}){Image(systemName: "plus.circle")}, trailing: EditButton())
             }
-                .tabItem {
-                    Image(systemName: "folder")
-                    Text("Beans")
+            .tabItem {
+                Image(systemName: "folder")
+                Text("Beans")
             }
+            
             Text("Profile Screen")
-                .tabItem {
-                    Image(systemName: "person.fill")
-                    Text("Profile")
+            .tabItem {
+                Image(systemName: "person.fill")
+                Text("Profile")
             }
-            Text("Settings Screen")
-                .tabItem {
-                    Image(systemName: "gear")
-                    Text("Settings")
+            
+            NavigationView{
+                Form{
+                    Section{
+                        Picker(selection: $darkModeSelection, label: Text("Color Mode")) {
+                            ForEach(0 ..< darkModeStates.count) {
+                                Text(self.darkModeStates[$0]).tag($0)
+                            }
+                        }
+                    }
+                }
+                .navigationBarTitle(Text("Color Mode"))
+            }
+            .tabItem {
+                Image(systemName: "gear")
+                Text("Settings")
             }
         }
-
     }
     
     func saveContext() {
